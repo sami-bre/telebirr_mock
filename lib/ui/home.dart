@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,36 +18,60 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens.elementAt(_selectedScreenIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.record_voice_over_rounded), label: "Promotion"),
-          BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_rounded), label: "My account"),
-        ],
-        onTap: (value) {
-          setState(() {
-            _selectedScreenIndex = value;
-          });
-        },
-        currentIndex: _selectedScreenIndex,
-        selectedItemColor: Colors.green,
+    return SafeArea(
+      child: Scaffold(
+        body: screens.elementAt(_selectedScreenIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.record_voice_over_rounded),
+                label: "Promotion"),
+            BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_box_rounded), label: "My account"),
+          ],
+          onTap: (value) {
+            setState(() {
+              _selectedScreenIndex = value;
+            });
+          },
+          currentIndex: _selectedScreenIndex,
+          selectedItemColor: Colors.green,
+        ),
       ),
     );
   }
 }
 
-class WalletScreen extends StatelessWidget {
+class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
 
   @override
+  State<WalletScreen> createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  bool _isDarkMode = Get.isDarkMode;
+
+  @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("This is wallet screen"),
-    );
+    return Center(
+        child: Column(
+      children: <Widget>[
+        Switch(
+          value: _isDarkMode,
+          onChanged: (bool value) {
+            _isDarkMode
+                ? Get.changeThemeMode(ThemeMode.light)
+                : Get.changeThemeMode(ThemeMode.dark);
+            setState(() {
+              _isDarkMode = !_isDarkMode;
+            });
+          },
+        ),
+        const Text("This is wallet screen"),
+      ],
+    ));
   }
 }
 
