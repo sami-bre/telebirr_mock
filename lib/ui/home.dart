@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,7 @@ class _HomeState extends State<Home> {
     const WalletScreen(),
     const AccountScreen(),
   ];
-  int _selectedScreenIndex = 0;
+  int _selectedScreenIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -52,26 +53,78 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   bool _isDarkMode = Get.isDarkMode;
+  double _balanceBlurValue = 7;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        Switch(
-          value: _isDarkMode,
-          onChanged: (bool value) {
-            _isDarkMode
-                ? Get.changeThemeMode(ThemeMode.light)
-                : Get.changeThemeMode(ThemeMode.dark);
-            setState(() {
-              _isDarkMode = !_isDarkMode;
-            });
-          },
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Switch(
+              value: _isDarkMode,
+              onChanged: (bool value) {
+                _isDarkMode
+                    ? Get.changeThemeMode(ThemeMode.light)
+                    : Get.changeThemeMode(ThemeMode.dark);
+                setState(() {
+                  _isDarkMode = !_isDarkMode;
+                });
+              },
+            ),
+            const Text("Hello User!")
+          ],
         ),
-        const Text("This is wallet screen"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            buildBalanceView()
+          ],
+        )
       ],
-    ));
+    );
+  }
+
+  Container buildBalanceView() {
+    return Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.blue[800]!, width: 2),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: GestureDetector(
+              onTap: revealBallance,
+              child: TweenAnimationBuilder<double>(
+                duration: const Duration(milliseconds: 700),
+                tween: Tween(begin: 7, end: _balanceBlurValue),
+                curve: Curves.ease,
+                builder: (context, value, child) {
+                  return Blur(
+                    blur: value,
+                    borderRadius: BorderRadius.circular(10),
+                    overlay: _balanceBlurValue != 0
+                        ? const Text("tap to reveal balance")
+                        : null,
+                    child: const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Text(
+                        "hey there",
+                        style: TextStyle(
+                          fontSize: 36,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+  }
+
+  void revealBallance() {
+    setState(() {
+      _balanceBlurValue = 0;
+    });
   }
 }
 
