@@ -226,7 +226,8 @@ class _WalletScreenState extends State<WalletScreen> {
             color: Colors.transparent,
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(20)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -238,7 +239,8 @@ class _WalletScreenState extends State<WalletScreen> {
                   const SizedBox(height: 5),
                   Text(
                     label,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Colors.blue[600], fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   )
                 ],
@@ -350,6 +352,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 height: 46,
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -384,6 +387,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 width: 74,
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -403,6 +407,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 width: 74,
                 child: ElevatedButton(
                   style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
