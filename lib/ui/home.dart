@@ -2,6 +2,15 @@ import 'package:blur/blur.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:telebirr_mock/ui/deposite_screen.dart';
+import 'package:telebirr_mock/ui/fund_raising_screen.dart';
+import 'package:telebirr_mock/ui/mini_statement_screen.dart';
+import 'package:telebirr_mock/ui/receive_payment_screen.dart';
+import 'package:telebirr_mock/ui/send_money_screen.dart';
+import 'package:telebirr_mock/ui/withdraw_screen.dart';
+
+import 'buy_packages_screen.dart';
+import 'financial_services_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -94,8 +103,149 @@ class _WalletScreenState extends State<WalletScreen> {
           buildBalanceRow(),
           const SizedBox(height: 20),
           buildInfoRow(context),
-          SizedBox(height: 2000)
+          const SizedBox(height: 20),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildActionButton(
+                      context,
+                      label: "Deposit",
+                      brightImage: "assets/icons/deposit.png",
+                      darkImage: "assets/icons/deposit.png",
+                      goToWidget: const DepositScreen(),
+                    ),
+                    buildActionButton(
+                      context,
+                      label: "Finance",
+                      brightImage: "assets/icons/save-money.png",
+                      darkImage: "assets/icons/save-money.png",
+                      goToWidget: const FinancialServiceScreen(),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildActionButton(
+                      context,
+                      label: "Send",
+                      brightImage: "assets/icons/transfer.png",
+                      darkImage: "assets/icons/transfer.png",
+                      goToWidget: const SendMoneyScreen(),
+                    ),
+                    buildActionButton(
+                      context,
+                      label: "Packages",
+                      brightImage: "assets/icons/received.png",
+                      darkImage: "assets/icons/received.png",
+                      goToWidget: const BuyPackagesScreen(),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildActionButton(
+                      context,
+                      label: "Receive",
+                      brightImage: "assets/icons/reciever.png",
+                      darkImage: "assets/icons/receiver.png",
+                      goToWidget: const ReceivePaymentScreen(),
+                    ),
+                    buildActionButton(
+                      context,
+                      label: "Fundraising",
+                      brightImage: "assets/icons/donation.png",
+                      darkImage: "assets/icons/donation.png",
+                      goToWidget: const FundRaisingScreen(),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildActionButton(
+                      context,
+                      label: "Withdraw",
+                      brightImage: "assets/icons/money-withdrawal.png",
+                      darkImage: "assets/icons/money-withdrawal.png",
+                      goToWidget: const WithdrawScreen(),
+                    ),
+                    buildActionButton(
+                      context,
+                      label: "Statement",
+                      brightImage: "assets/icons/file.png",
+                      darkImage: "assets/icons/file.png",
+                      goToWidget: const MiniStatementScreen(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget buildActionButton(
+    /// these buttons (on one screen) should have different labes to work as a hero.
+    BuildContext context, {
+    required String label,
+    required String brightImage,
+    required String darkImage,
+    required Widget goToWidget,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => goToWidget,
+          ),
+        );
+      },
+      child: Hero(
+        tag: label,
+        child: SizedBox(
+          height: 90,
+          width: 160,
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    brightImage,
+                    width: 30,
+                    height: 30,
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    label,
+                    style: Theme.of(context).textTheme.titleMedium,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
