@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   blur: ^3.1.0
+  fl_chart: ^0.61.0
 
 dev_dependencies:
   flutter_test:
