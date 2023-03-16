@@ -106,100 +106,104 @@ class _WalletScreenState extends State<WalletScreen> {
           const SizedBox(height: 20),
           buildInfoRow(context),
           const SizedBox(height: 20),
-          Column(
+          buildActionsRowInPortrait(context),
+        ],
+      ),
+    );
+  }
+
+  Column buildActionsRowInPortrait(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildActionButton(
-                      context,
-                      label: "Deposit",
-                      brightImage: "assets/icons/deposit.png",
-                      darkImage: "assets/icons/deposit.png",
-                      goToWidget: const DepositScreen(),
-                    ),
-                    buildActionButton(
-                      context,
-                      label: "Finance",
-                      brightImage: "assets/icons/save-money.png",
-                      darkImage: "assets/icons/save-money.png",
-                      goToWidget: const FinancialServiceScreen(),
-                    ),
-                  ],
-                ),
+              buildActionButton(
+                context,
+                label: "Deposit",
+                brightImage: "assets/icons/deposit.png",
+                darkImage: "assets/icons/deposit.png",
+                goToWidget: const DepositScreen(),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildActionButton(
-                      context,
-                      label: "Send",
-                      brightImage: "assets/icons/transfer.png",
-                      darkImage: "assets/icons/transfer.png",
-                      goToWidget: const SendMoneyScreen(),
-                    ),
-                    buildActionButton(
-                      context,
-                      label: "Packages",
-                      brightImage: "assets/icons/received.png",
-                      darkImage: "assets/icons/received.png",
-                      goToWidget: const BuyPackagesScreen(),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildActionButton(
-                      context,
-                      label: "Receive",
-                      brightImage: "assets/icons/reciever.png",
-                      darkImage: "assets/icons/receiver.png",
-                      goToWidget: const ReceivePaymentScreen(),
-                    ),
-                    buildActionButton(
-                      context,
-                      label: "Fundraising",
-                      brightImage: "assets/icons/donation.png",
-                      darkImage: "assets/icons/donation.png",
-                      goToWidget: const FundRaisingScreen(),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildActionButton(
-                      context,
-                      label: "Withdraw",
-                      brightImage: "assets/icons/money-withdrawal.png",
-                      darkImage: "assets/icons/money-withdrawal.png",
-                      goToWidget: const WithdrawScreen(),
-                    ),
-                    buildActionButton(
-                      context,
-                      label: "Statement",
-                      brightImage: "assets/icons/file.png",
-                      darkImage: "assets/icons/file.png",
-                      goToWidget: const MiniStatementScreen(),
-                    ),
-                  ],
-                ),
+              buildActionButton(
+                context,
+                label: "Finance",
+                brightImage: "assets/icons/save-money.png",
+                darkImage: "assets/icons/save-money.png",
+                goToWidget: const FinancialServiceScreen(),
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildActionButton(
+                context,
+                label: "Send",
+                brightImage: "assets/icons/transfer.png",
+                darkImage: "assets/icons/transfer.png",
+                goToWidget: const SendMoneyScreen(),
+              ),
+              buildActionButton(
+                context,
+                label: "Packages",
+                brightImage: "assets/icons/received.png",
+                darkImage: "assets/icons/received.png",
+                goToWidget: const BuyPackagesScreen(),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildActionButton(
+                context,
+                label: "Receive",
+                brightImage: "assets/icons/reciever.png",
+                darkImage: "assets/icons/receiver.png",
+                goToWidget: const ReceivePaymentScreen(),
+              ),
+              buildActionButton(
+                context,
+                label: "Fundraising",
+                brightImage: "assets/icons/donation.png",
+                darkImage: "assets/icons/donation.png",
+                goToWidget: const FundRaisingScreen(),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildActionButton(
+                context,
+                label: "Withdraw",
+                brightImage: "assets/icons/money-withdrawal.png",
+                darkImage: "assets/icons/money-withdrawal.png",
+                goToWidget: const WithdrawScreen(),
+              ),
+              buildActionButton(
+                context,
+                label: "Statement",
+                brightImage: "assets/icons/file.png",
+                darkImage: "assets/icons/file.png",
+                goToWidget: const MiniStatementScreen(),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
