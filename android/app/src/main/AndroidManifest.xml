@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.telebirr_mock">
+    package="com.samibre.telebirr_mock">
    <application
         android:label="telebirr mock"
         android:name="${applicationName}"

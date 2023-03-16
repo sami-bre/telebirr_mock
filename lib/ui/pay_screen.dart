@@ -76,26 +76,34 @@ class PayScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ListCard(
-            title: "Buy Airtime",
-            subtitle: "This is dummy content.",
-          ),
-          const ListCard(
-            title: "Buy package",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Buy airtime via endekise",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Buy package via endekise",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Unsubscribe package",
-            subtitle: "This is dummy content",
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  SizedBox(height: 24),
+                  ListCard(
+                    title: "Pay bill",
+                    subtitle: "This is dummy content.",
+                  ),
+                  ListCard(
+                    title: "Pay for merchant",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Utility payment",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Traffic penalty payment",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Service payment",
+                    subtitle: "This is dummy content",
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

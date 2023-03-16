@@ -11,10 +11,11 @@ import 'package:telebirr_mock/ui/scan_screen.dart';
 import 'package:telebirr_mock/ui/send_money_screen.dart';
 import 'package:telebirr_mock/ui/transaction_screen.dart';
 import 'package:telebirr_mock/ui/withdraw_screen.dart';
-import 'dart:io';
 
+import 'account_screen.dart';
 import 'buy_packages_screen.dart';
 import 'financial_services_screen.dart';
+import 'promotion_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
   final screens = [
     const PromotionScreen(),
     const WalletScreen(),
-    const AccountScreen(),
+    AccountScreen(),
   ];
   int _selectedScreenIndex = 1;
 
@@ -204,11 +205,15 @@ class _WalletScreenState extends State<WalletScreen> {
     return Column(
       children: [
         const SizedBox(height: 10),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          decoration: BoxDecoration(
-              color: Colors.grey[300], borderRadius: BorderRadius.circular(20)),
-          child: buildBrandRow(),
+        Hero(
+          tag: "title",
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(20)),
+            child: buildBrandRow(),
+          ),
         ),
         const SizedBox(height: 30),
         buildBalanceRow(),
@@ -220,7 +225,7 @@ class _WalletScreenState extends State<WalletScreen> {
     );
   }
 
-  Row buildBrandRow() {
+  Widget buildBrandRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -612,29 +617,6 @@ class _WalletScreenState extends State<WalletScreen> {
                   ),
                 ),
               ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(20),
-              //   ),
-              //   height: 74,
-              //   width: 74,
-              //   child: ElevatedButton(
-              //     style: ButtonStyle(
-              //       backgroundColor: MaterialStateProperty.all(Colors.blue),
-              //       shape: MaterialStateProperty.all(
-              //         RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(20),
-              //         ),
-              //       ),
-              //     ),
-              //     onPressed: () {},
-              //     child: Image.asset(
-              //       "assets/icons/qr-code.png",
-              //       width: 34,
-              //       height: 34,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
           const SizedBox(width: 20),
@@ -708,180 +690,5 @@ class _WalletScreenState extends State<WalletScreen> {
     setState(() {
       _balanceBlurValue = 0;
     });
-  }
-}
-
-class PromotionScreen extends StatefulWidget {
-  const PromotionScreen({super.key});
-
-  @override
-  State<PromotionScreen> createState() => _PromotionScreenState();
-}
-
-class _PromotionScreenState extends State<PromotionScreen> {
-  int counter = 0; // a counter to track which "page" we're at
-  List<Widget> pictures = []; // list of the 5 pictures on the 5 "images"
-  List<Widget> messages = []; // list of the 5 messages on the 5 "images"
-  late Widget displayedPicture; // the image currently displayed
-  late Widget displayedMessage;
-
-  @override
-  void initState() {
-    loopThroughPromotions();
-    super.initState();
-  }
-
-  void createWidgets() {
-    // this method populates the lists of widgets we use on the 3 images
-    // populating the pictures list
-    pictures.addAll([
-      buildPromotionPicture("assets/images/promotion-1.png"),
-      buildPromotionPicture("assets/images/promotion-2.png"),
-      buildPromotionPicture("assets/images/promotion-3.png"),
-      buildPromotionPicture("assets/images/promotion-4.png"),
-      buildPromotionPicture("assets/images/promotion-5.png"),
-    ]);
-    // populating the messages list
-    messages.addAll([
-      buildMessage(
-        "Send and recieve money via telebirr.",
-        "Wherever you are!",
-      ),
-      buildMessage(
-        "Scan and pay your service bill via telebirr.",
-        "Easy and easy and convenient!",
-      ),
-      buildMessage(
-          "Pay your telecom bill via telebirr.", "Save your valuable time!"),
-      buildMessage(
-          "Buy airtime via telebirr anywhere anytime.", "Stay connected!"),
-      buildMessage("Scan and pay your service bill via telebirr.",
-          "Easy and easy and convenient!")
-    ]);
-    // at the start, we show the first elements from each list
-    displayedPicture = pictures[counter];
-    displayedMessage = messages[counter];
-  }
-
-  Widget buildMessage(String mainMessage, String subMessage) {
-    return SizedBox(
-      key: UniqueKey(),
-      height: 150,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              mainMessage,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-                color: Colors.blue,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Text(
-              subMessage,
-              overflow: TextOverflow.fade,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.orange,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void loopThroughPromotions() {
-    Stream.periodic(const Duration(seconds: 4)).listen((event) {
-      setState(() {
-        counter = (counter + 1) % 5;
-      });
-    });
-  }
-
-  Widget buildPromotionPicture(String assetName) {
-    return SizedBox(
-      key: UniqueKey(),
-      height: 300,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(40),
-          child: Image.asset(assetName),
-        ),
-      ),
-    );
-  }
-
-  Widget buildPageControlDots(int currentPageNumber) {
-    return Row(
-      key: UniqueKey(),
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        for (var index = 0; index < 5; index++)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CircleAvatar(
-              radius: 5,
-              backgroundColor:
-                  index == currentPageNumber ? Colors.green : Colors.blue[100],
-            ),
-          )
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // we will maintain the same layout-forming column but switch the
-    // contained widgets in order to show the 5 different images
-    createWidgets();
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: 600,
-            child: Column(
-              children: <Widget>[
-                const Spacer(flex: 3),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  child: displayedPicture,
-                ),
-                const Spacer(),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  child: displayedMessage,
-                ),
-                const Spacer(),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  child: buildPageControlDots(counter),
-                ),
-                const Spacer(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("This is account screen"),
-    );
   }
 }
