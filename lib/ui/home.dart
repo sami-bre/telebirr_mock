@@ -66,7 +66,8 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   bool _isDarkMode = Get.isDarkMode;
-  double _balanceBlurValue = 7;
+  double _balanceBlurValue = 8;
+  bool _rewardBalance = false;
   final daysList = const <Widget>[
     Text("Mo"),
     Text("Tu"),
@@ -640,32 +641,48 @@ class _WalletScreenState extends State<WalletScreen> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue[800]!, width: 2),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(32),
       ),
       child: GestureDetector(
-        onTap: revealBallance,
+        onTap: _balanceBlurValue != 0
+            ? revealBallance
+            : () {
+                setState(() {
+                  _rewardBalance = !_rewardBalance;
+                });
+              },
         child: TweenAnimationBuilder<double>(
           duration: const Duration(milliseconds: 700),
-          tween: Tween(begin: 7, end: _balanceBlurValue),
+          tween: Tween(begin: 8, end: _balanceBlurValue),
           curve: Curves.ease,
           builder: (context, value, child) {
             return Blur(
               blur: value,
               borderRadius: BorderRadius.circular(30),
               overlay: _balanceBlurValue != 0
-                  ? const Text("tap to reveal balance")
+                  ? Flexible(
+                      child: Text(
+                        "Tap to reveal balance",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    )
                   : null,
               child: Container(
                 padding: const EdgeInsets.all(12.0),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
-                        "hey there",
-                        style: TextStyle(
+                        _rewardBalance ? "274 (ETB)" : "12,490 (ETB)",
+                        style: const TextStyle(
                           fontSize: 36,
                         ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Tap for ${_rewardBalance == true ? "reward " : ""}ballance",
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ],
                   ),
