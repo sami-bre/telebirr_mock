@@ -16,35 +16,61 @@ class PayScreen extends StatelessWidget {
                 Expanded(
                   child: Hero(
                     tag: "pay",
-                    child: SizedBox(
-                      height: 140,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(0)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                "assets/icons/money_2.png",
-                                width: 44,
-                                height: 44,
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          height: 140,
+                          width: MediaQuery.of(context).size.width,
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(0)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/icons/money_2.png",
+                                    width: 44,
+                                    height: 44,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    "Pay with telebirr",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
                               ),
-                              const SizedBox(width: 5),
-                              Text(
-                                "Pay with telebirr",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              )
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(
+                          top: 50,
+                          left: 20,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              width: 44,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: const Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.blue,
+                                size: 28,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
