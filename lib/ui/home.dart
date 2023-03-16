@@ -809,7 +809,7 @@ class _PromotionScreenState extends State<PromotionScreen> {
   Widget buildPromotionPicture(String assetName) {
     return SizedBox(
       key: UniqueKey(),
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: 300,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: ClipRRect(
@@ -844,25 +844,32 @@ class _PromotionScreenState extends State<PromotionScreen> {
     // contained widgets in order to show the 5 different images
     createWidgets();
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          const Spacer(flex: 3),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 800),
-            child: displayedPicture,
+      body: Center(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: 600,
+            child: Column(
+              children: <Widget>[
+                const Spacer(flex: 3),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 800),
+                  child: displayedPicture,
+                ),
+                const Spacer(),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 800),
+                  child: displayedMessage,
+                ),
+                const Spacer(),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 800),
+                  child: buildPageControlDots(counter),
+                ),
+                const Spacer(),
+              ],
+            ),
           ),
-          const Spacer(),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 800),
-            child: displayedMessage,
-          ),
-          const Spacer(),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 800),
-            child: buildPageControlDots(counter),
-          ),
-          const Spacer(),
-        ],
+        ),
       ),
     );
   }
