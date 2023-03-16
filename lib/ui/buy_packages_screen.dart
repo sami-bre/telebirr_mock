@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'list_card.dart';
+
 class BuyPackagesScreen extends StatelessWidget {
   const BuyPackagesScreen({super.key});
 
@@ -20,7 +22,7 @@ class BuyPackagesScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,13 +47,26 @@ class BuyPackagesScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.payments_outlined,
-                  size: 200,
-                ),
-              ],
+            const SizedBox(height: 24),
+            const ListCard(
+              title: "Buy Airtime",
+              subtitle: "This is dummy content.",
+            ),
+            const ListCard(
+              title: "Buy package",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Buy airtime via endekise",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Buy package via endekise",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Unsubscribe package",
+              subtitle: "This is dummy content",
             ),
           ],
         ),

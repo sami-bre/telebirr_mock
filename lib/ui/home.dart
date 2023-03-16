@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:telebirr_mock/ui/deposite_screen.dart';
 import 'package:telebirr_mock/ui/fund_raising_screen.dart';
 import 'package:telebirr_mock/ui/mini_statement_screen.dart';
+import 'package:telebirr_mock/ui/pay_screen.dart';
 import 'package:telebirr_mock/ui/receive_payment_screen.dart';
+import 'package:telebirr_mock/ui/scan_screen.dart';
 import 'package:telebirr_mock/ui/send_money_screen.dart';
 import 'package:telebirr_mock/ui/withdraw_screen.dart';
 
@@ -385,47 +387,103 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
                 height: 74,
                 width: 74,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PayScreen(),
+                      ),
+                    );
+                  },
+                  child: Hero(
+                    tag: "pay",
+                    child: SizedBox(
+                      height: 74,
+                      width: 74,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  "assets/icons/money_2.png",
+                                  width: 42,
+                                  height: 42,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  onPressed: () {},
-                  child: Image.asset(
-                    "assets/icons/money_2.png",
-                    width: 42,
-                    height: 42,
                   ),
                 ),
               ),
               const Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                height: 74,
-                width: 74,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ScanScreen(),
+                    ),
+                  );
+                },
+                child: Hero(
+                  tag: "scan",
+                  child: SizedBox(
+                    height: 74,
+                    width: 74,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                "assets/icons/qr-code.png",
+                                width: 42,
+                                height: 42,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  onPressed: () {},
-                  child: Image.asset(
-                    "assets/icons/qr-code.png",
-                    width: 34,
-                    height: 34,
-                  ),
                 ),
               ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(20),
+              //   ),
+              //   height: 74,
+              //   width: 74,
+              //   child: ElevatedButton(
+              //     style: ButtonStyle(
+              //       backgroundColor: MaterialStateProperty.all(Colors.blue),
+              //       shape: MaterialStateProperty.all(
+              //         RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(20),
+              //         ),
+              //       ),
+              //     ),
+              //     onPressed: () {},
+              //     child: Image.asset(
+              //       "assets/icons/qr-code.png",
+              //       width: 34,
+              //       height: 34,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           const SizedBox(width: 20),

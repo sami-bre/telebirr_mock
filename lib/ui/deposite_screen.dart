@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'list_card.dart';
+
 class DepositScreen extends StatelessWidget {
   const DepositScreen({super.key});
 
@@ -17,10 +19,11 @@ class DepositScreen extends StatelessWidget {
                     child: SizedBox(
                       height: 140,
                       child: Material(
+                        elevation: 4,
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +36,10 @@ class DepositScreen extends StatelessWidget {
                               const SizedBox(width: 5),
                               Text(
                                 "Deposit cash",
-                                style: Theme.of(context).textTheme.titleLarge,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(color: Colors.black),
                                 textAlign: TextAlign.center,
                               )
                             ],
@@ -45,14 +51,15 @@ class DepositScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.payments_outlined,
-                  size: 200,
-                ),
-              ],
+            const SizedBox(height: 24),
+            const ListCard(
+              title: "Agent",
+              subtitle: "This is dummy content.",
             ),
+            const ListCard(
+              title: "Apply deposit voucher",
+              subtitle: "This is dummy content.",
+            )
           ],
         ),
       ),

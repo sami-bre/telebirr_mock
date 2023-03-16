@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'list_card.dart';
+
 class SendMoneyScreen extends StatelessWidget {
   const SendMoneyScreen({super.key});
 
@@ -20,7 +22,7 @@ class SendMoneyScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,13 +47,14 @@ class SendMoneyScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.payments_outlined,
-                  size: 200,
-                ),
-              ],
+            const SizedBox(height: 24),
+            const ListCard(
+              title: "Send money",
+              subtitle: "This is dummy content.",
+            ),
+            const ListCard(
+              title: "Transfer to bank",
+              subtitle: "This is dummy content.",
             ),
           ],
         ),

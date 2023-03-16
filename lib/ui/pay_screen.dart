@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ReceivePaymentScreen extends StatelessWidget {
-  const ReceivePaymentScreen({super.key});
+import 'list_card.dart';
+
+class PayScreen extends StatelessWidget {
+  const PayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,27 +15,30 @@ class ReceivePaymentScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Hero(
-                    tag: "Receive",
+                    tag: "pay",
                     child: SizedBox(
                       height: 140,
                       child: Material(
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.blue,
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "assets/icons/reciever.png",
+                                "assets/icons/money_2.png",
                                 width: 44,
                                 height: 44,
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                "Receive payment",
-                                style: Theme.of(context).textTheme.titleLarge,
+                                "Pay with telebirr",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(color: Colors.white),
                                 textAlign: TextAlign.center,
                               )
                             ],
@@ -45,19 +50,27 @@ class ReceivePaymentScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(flex: 1),
-            Center(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-                child: Text(
-                  "This is dummy content.",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
+            const SizedBox(height: 24),
+            const ListCard(
+              title: "Buy Airtime",
+              subtitle: "This is dummy content.",
             ),
-            const Spacer(flex: 2)
+            const ListCard(
+              title: "Buy package",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Buy airtime via endekise",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Buy package via endekise",
+              subtitle: "This is dummy content",
+            ),
+            const ListCard(
+              title: "Unsubscribe package",
+              subtitle: "This is dummy content",
+            ),
           ],
         ),
       ),

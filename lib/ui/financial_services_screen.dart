@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'list_card.dart';
+
 class FinancialServiceScreen extends StatelessWidget {
   const FinancialServiceScreen({super.key});
 
@@ -20,7 +22,7 @@ class FinancialServiceScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,13 +47,18 @@ class FinancialServiceScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.payments_outlined,
-                  size: 200,
-                ),
-              ],
+            const SizedBox(height: 24),
+            const ListCard(
+              title: "Telebirr mela",
+              subtitle: "Micro credit",
+            ),
+            const ListCard(
+              title: "Telebirr sanduq",
+              subtitle: "Saving",
+            ),
+            const ListCard(
+              title: "Telebirr endekise",
+              subtitle: "Credit pay",
             ),
           ],
         ),

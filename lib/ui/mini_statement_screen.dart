@@ -20,7 +20,7 @@ class MiniStatementScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(0)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,14 +45,19 @@ class MiniStatementScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.payments_outlined,
-                  size: 200,
+            const Spacer(flex: 1),
+            Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+                child: Text(
+                  "This is dummy content.",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
-              ],
+              ),
             ),
+            const Spacer(flex: 2)
           ],
         ),
       ),
