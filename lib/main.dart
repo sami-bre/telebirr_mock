@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telebirr_mock/ui/home.dart';
+import 'package:telebirr_mock/ui/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
