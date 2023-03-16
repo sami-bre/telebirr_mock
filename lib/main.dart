@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         switchTheme: SwitchThemeData(
-          thumbColor: MaterialStateProperty.all(Colors.black),
+          thumbColor: MaterialStateProperty.all(Colors.grey[800]),
           trackColor: MaterialStateProperty.all(Colors.grey[500]),
         ),
         primarySwatch: Colors.blue,

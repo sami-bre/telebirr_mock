@@ -236,7 +236,7 @@ class _WalletScreenState extends State<WalletScreen> {
               : Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(color: Colors.black),
+                  .copyWith(color: Colors.grey[800]),
         )
       ],
     );
@@ -406,7 +406,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 Text("Accepted"),
                 Spacer(),
                 CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.orange,
                   radius: 8,
                 ),
                 SizedBox(width: 5),
@@ -427,31 +427,31 @@ class _WalletScreenState extends State<WalletScreen> {
                     barGroups: <BarChartGroupData>[
                       BarChartGroupData(x: 0, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 700 * value, color: Colors.blue),
-                        BarChartRodData(toY: 420 * value, color: Colors.red)
+                        BarChartRodData(toY: 420 * value, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 1, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 562, color: Colors.blue),
-                        BarChartRodData(toY: 910 * value, color: Colors.red)
+                        BarChartRodData(toY: 910 * value, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 2, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 1157 * value, color: Colors.blue),
-                        BarChartRodData(toY: 225, color: Colors.red)
+                        BarChartRodData(toY: 225, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 3, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 496 * value, color: Colors.blue),
-                        BarChartRodData(toY: 841 * value, color: Colors.red)
+                        BarChartRodData(toY: 841 * value, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 4, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 1254 * value, color: Colors.blue),
-                        BarChartRodData(toY: 594, color: Colors.red)
+                        BarChartRodData(toY: 594, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 5, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 270 * value, color: Colors.blue),
-                        BarChartRodData(toY: 1008 * value, color: Colors.red)
+                        BarChartRodData(toY: 1008 * value, color: Colors.orange)
                       ]),
                       BarChartGroupData(x: 6, barRods: <BarChartRodData>[
                         BarChartRodData(toY: 417 * value, color: Colors.blue),
-                        BarChartRodData(toY: 827 * value, color: Colors.red)
+                        BarChartRodData(toY: 827 * value, color: Colors.orange)
                       ]),
                     ],
                     borderData: FlBorderData(show: false),
