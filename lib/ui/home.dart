@@ -36,22 +36,30 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         body: screens.elementAt(_selectedScreenIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.record_voice_over_rounded),
-                label: "Promotion"),
-            BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_box_rounded), label: "My account"),
-          ],
-          onTap: (value) {
-            setState(() {
-              _selectedScreenIndex = value;
-            });
-          },
-          currentIndex: _selectedScreenIndex,
-          selectedItemColor: Colors.green,
+        bottomNavigationBar: SizedBox(
+          height: MediaQuery.of(context).orientation == Orientation.portrait
+              ? 80
+              : null,
+          child: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.record_voice_over_rounded),
+                  label: "Promotion"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.wallet), label: "Wallet"),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_box_rounded),
+                label: "My account",
+              ),
+            ],
+            onTap: (value) {
+              setState(() {
+                _selectedScreenIndex = value;
+              });
+            },
+            currentIndex: _selectedScreenIndex,
+            selectedItemColor: Colors.green,
+          ),
         ),
       ),
     );
