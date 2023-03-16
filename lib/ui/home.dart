@@ -9,6 +9,7 @@ import 'package:telebirr_mock/ui/pay_screen.dart';
 import 'package:telebirr_mock/ui/receive_payment_screen.dart';
 import 'package:telebirr_mock/ui/scan_screen.dart';
 import 'package:telebirr_mock/ui/send_money_screen.dart';
+import 'package:telebirr_mock/ui/transaction_screen.dart';
 import 'package:telebirr_mock/ui/withdraw_screen.dart';
 
 import 'buy_packages_screen.dart';
@@ -495,7 +496,13 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const TransactionScreen(),
+                      ),
+                    );
+                  },
                   child: const Text("More"),
                 ),
               ),
