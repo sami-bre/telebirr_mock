@@ -232,7 +232,8 @@ class _WalletScreenState extends State<WalletScreen> {
         if (MediaQuery.of(context).size.width > 180)
           Image.asset(
             "assets/icons/telebirr-logo.png",
-            height: 68,
+            // height: 68,
+            width: MediaQuery.of(context).size.width * 0.26,
           ),
         const Spacer(),
         Switch(
@@ -374,7 +375,7 @@ class _WalletScreenState extends State<WalletScreen> {
         tag: label,
         child: SizedBox(
           height: 90,
-          width: 160,
+          width: 136,
           child: Material(
             color: Colors.transparent,
             child: Container(
