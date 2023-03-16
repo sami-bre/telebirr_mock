@@ -83,32 +83,161 @@ class _WalletScreenState extends State<WalletScreen> {
         horizontal: MediaQuery.of(context).size.width * 0.04,
         vertical: 0,
       ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Switch(
-                value: _isDarkMode,
-                onChanged: (bool value) {
-                  _isDarkMode
-                      ? Get.changeThemeMode(ThemeMode.light)
-                      : Get.changeThemeMode(ThemeMode.dark);
-                  setState(() {
-                    _isDarkMode = !_isDarkMode;
-                  });
-                },
+      child: Builder(builder: (context) {
+        if (MediaQuery.of(context).orientation == Orientation.portrait) {
+          return buildHomeScreenInPortrait(context);
+        } else {
+          return Column(
+            children: [
+              buildBrandRow(),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: buildBalanceRow(),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(24, 0, 4, 0),
+                    height: 160,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Expanded(
+                    child: buildInfoRow(context),
+                  ),
+                ],
               ),
-              const Text("Hello User!")
+              const SizedBox(height: 10),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    buildActionButton(
+                      context,
+                      label: "Deposit",
+                      brightImage: "assets/icons/deposit.png",
+                      darkImage: "assets/icons/deposit.png",
+                      goToWidget: const DepositScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Finance",
+                      brightImage: "assets/icons/save-money.png",
+                      darkImage: "assets/icons/save-money.png",
+                      goToWidget: const FinancialServiceScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Send",
+                      brightImage: "assets/icons/transfer.png",
+                      darkImage: "assets/icons/transfer.png",
+                      goToWidget: const SendMoneyScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Packages",
+                      brightImage: "assets/icons/received.png",
+                      darkImage: "assets/icons/received.png",
+                      goToWidget: const BuyPackagesScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Receive",
+                      brightImage: "assets/icons/reciever.png",
+                      darkImage: "assets/icons/receiver.png",
+                      goToWidget: const ReceivePaymentScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Fundraising",
+                      brightImage: "assets/icons/donation.png",
+                      darkImage: "assets/icons/donation.png",
+                      goToWidget: const FundRaisingScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Withdraw",
+                      brightImage: "assets/icons/money-withdrawal.png",
+                      darkImage: "assets/icons/money-withdrawal.png",
+                      goToWidget: const WithdrawScreen(),
+                    ),
+                    const SizedBox(width: 10),
+                    buildActionButton(
+                      context,
+                      label: "Statement",
+                      brightImage: "assets/icons/file.png",
+                      darkImage: "assets/icons/file.png",
+                      goToWidget: const MiniStatementScreen(),
+                    ),
+                  ],
+                ),
+              ),
             ],
-          ),
-          buildBalanceRow(),
-          const SizedBox(height: 20),
-          buildInfoRow(context),
-          const SizedBox(height: 20),
-          buildActionsRowInPortrait(context),
-        ],
-      ),
+          );
+        }
+      }),
+    );
+  }
+
+  Column buildHomeScreenInPortrait(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          decoration: BoxDecoration(
+              color: Colors.grey[300], borderRadius: BorderRadius.circular(20)),
+          child: buildBrandRow(),
+        ),
+        const SizedBox(height: 30),
+        buildBalanceRow(),
+        const SizedBox(height: 20),
+        buildInfoRow(context),
+        const SizedBox(height: 20),
+        buildActionsRowInPortrait(context),
+      ],
+    );
+  }
+
+  Row buildBrandRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(
+          "assets/icons/telebirr-logo.png",
+          height: 68,
+        ),
+        const Spacer(),
+        Switch(
+          value: _isDarkMode,
+          onChanged: (bool value) {
+            _isDarkMode
+                ? Get.changeThemeMode(ThemeMode.light)
+                : Get.changeThemeMode(ThemeMode.dark);
+            setState(() {
+              _isDarkMode = !_isDarkMode;
+            });
+          },
+        ),
+        Text(
+          "Hello Sami",
+          style: MediaQuery.of(context).orientation == Orientation.landscape
+              ? Theme.of(context).textTheme.titleLarge
+              : Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(color: Colors.black),
+        )
+      ],
     );
   }
 

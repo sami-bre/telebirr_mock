@@ -16,10 +16,18 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         brightness: Brightness.light,
+        switchTheme: SwitchThemeData(
+          thumbColor: MaterialStateProperty.all(Colors.black),
+          trackColor: MaterialStateProperty.all(Colors.grey[500]),
+        ),
         primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        switchTheme: SwitchThemeData(
+          thumbColor: MaterialStateProperty.all(Colors.white),
+          trackColor: MaterialStateProperty.all(Colors.grey[500]),
+        ),
       ),
       home: const Home(),
     );
