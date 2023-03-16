@@ -229,10 +229,11 @@ class _WalletScreenState extends State<WalletScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.asset(
-          "assets/icons/telebirr-logo.png",
-          height: 68,
-        ),
+        if (MediaQuery.of(context).size.width > 180)
+          Image.asset(
+            "assets/icons/telebirr-logo.png",
+            height: 68,
+          ),
         const Spacer(),
         Switch(
           value: _isDarkMode,
@@ -498,7 +499,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 "Transactions",
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              const SizedBox(width: 30),
+              const SizedBox(width: 20),
               SizedBox(
                 width: 100,
                 height: 46,
@@ -654,6 +655,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   ? Flexible(
                       child: Text(
                         "Tap to reveal balance",
+                        textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     )
@@ -666,6 +668,7 @@ class _WalletScreenState extends State<WalletScreen> {
                     children: [
                       Text(
                         _rewardBalance ? "274 (ETB)" : "12,490 (ETB)",
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 36,
                         ),
