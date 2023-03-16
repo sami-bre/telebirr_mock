@@ -76,14 +76,22 @@ class SendMoneyScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ListCard(
-            title: "Send money",
-            subtitle: "This is dummy content.",
-          ),
-          const ListCard(
-            title: "Transfer to bank",
-            subtitle: "This is dummy content.",
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  SizedBox(height: 24),
+                  ListCard(
+                    title: "Send money",
+                    subtitle: "This is dummy content.",
+                  ),
+                  ListCard(
+                    title: "Transfer to bank",
+                    subtitle: "This is dummy content.",
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

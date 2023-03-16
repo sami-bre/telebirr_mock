@@ -76,18 +76,26 @@ class FinancialServiceScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ListCard(
-            title: "Telebirr mela",
-            subtitle: "Micro credit",
-          ),
-          const ListCard(
-            title: "Telebirr sanduq",
-            subtitle: "Saving",
-          ),
-          const ListCard(
-            title: "Telebirr endekise",
-            subtitle: "Credit pay",
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  SizedBox(height: 24),
+                  ListCard(
+                    title: "Telebirr mela",
+                    subtitle: "Micro credit",
+                  ),
+                  ListCard(
+                    title: "Telebirr sanduq",
+                    subtitle: "Saving",
+                  ),
+                  ListCard(
+                    title: "Telebirr endekise",
+                    subtitle: "Credit pay",
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

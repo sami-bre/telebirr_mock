@@ -77,15 +77,23 @@ class DepositScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ListCard(
-            title: "Agent",
-            subtitle: "This is dummy content.",
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  SizedBox(height: 24),
+                  ListCard(
+                    title: "Agent",
+                    subtitle: "This is dummy content.",
+                  ),
+                  ListCard(
+                    title: "Apply deposit voucher",
+                    subtitle: "This is dummy content.",
+                  )
+                ],
+              ),
+            ),
           ),
-          const ListCard(
-            title: "Apply deposit voucher",
-            subtitle: "This is dummy content.",
-          )
         ],
       ),
     );

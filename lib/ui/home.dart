@@ -89,6 +89,7 @@ class _WalletScreenState extends State<WalletScreen> {
         } else {
           return Column(
             children: [
+              const SizedBox(height: 5),
               buildBrandRow(),
               const SizedBox(height: 10),
               Row(

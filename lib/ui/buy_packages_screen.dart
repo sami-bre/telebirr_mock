@@ -76,26 +76,34 @@ class BuyPackagesScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ListCard(
-            title: "Buy Airtime",
-            subtitle: "This is dummy content.",
-          ),
-          const ListCard(
-            title: "Buy package",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Buy airtime via endekise",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Buy package via endekise",
-            subtitle: "This is dummy content",
-          ),
-          const ListCard(
-            title: "Unsubscribe package",
-            subtitle: "This is dummy content",
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  SizedBox(height: 24),
+                  ListCard(
+                    title: "Buy Airtime",
+                    subtitle: "This is dummy content.",
+                  ),
+                  ListCard(
+                    title: "Buy package",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Buy airtime via endekise",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Buy package via endekise",
+                    subtitle: "This is dummy content",
+                  ),
+                  ListCard(
+                    title: "Unsubscribe package",
+                    subtitle: "This is dummy content",
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
